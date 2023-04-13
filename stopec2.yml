@@ -1,0 +1,9 @@
+---
+ - hosts: localhost
+   connection: local
+   tasks:
+    - name: stopping the ec2 instance using ansible playbook
+      ec2:
+         instance_id: i-06143fa6432e7ba86
+         state: stopped
+         region: ap-south-1

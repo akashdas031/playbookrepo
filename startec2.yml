@@ -1,0 +1,16 @@
+---
+ - hosts: localhost
+   connection: local
+   tasks:
+     - name: playbook to start the instance using the ansible
+       ec2:
+         instance_id: i-06143fa6432e7ba86
+         state: running
+         region: ap-south-1
+       register: ec2_start    
+     - name: wait for ec2 instance to start
+       wait_for:
+         hosts: "{{ ec2_start.instancees[0].public_ip }}"
+         port: 22
+         delay: 10
+         timeout: 300

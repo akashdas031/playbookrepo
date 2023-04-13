@@ -1,0 +1,9 @@
+---
+ - hosts: localhost
+   connection: local
+   tasks:
+       - name: playbook to terminate ec2 instance
+         ec2:
+           instance_id: i-03175e631fe6ff5c6
+           state: absent
+           region: ap-south-1
